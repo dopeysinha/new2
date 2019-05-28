@@ -1,0 +1,56 @@
+#include<iostream>
+#include<string>
+#include<conio.h>
+#include<map>
+#include<iterator>
+#include<algorithm>
+using namespace std;
+
+string fun(int i)
+{
+       char map[] = "abcdefghijklmnopqrstuvwxyzABCDEF"
+                 "GHIJKLMNOPQRSTUVWXYZ0123456789"; 
+  
+    string shorturl; 
+
+    while (i) 
+    { 
+
+        shorturl.push_back(map[i%62]); 
+        i = i/62; 
+    } 
+  
+    reverse(shorturl.begin(), shorturl.end()); 
+  
+    return shorturl;
+}
+
+int main()
+{
+    
+    string x[1500];
+    string shortq;
+    int i;
+    string p;
+    for(i=100;i<=1500;i++)
+    {
+        cout<<"Please enter the URL"<<endl;
+        cin>>x[i];
+        for(int j =100;j<=i;j++)
+        {
+            if(x[j] == x[i])
+            {
+            i=j;
+            break;
+            }
+        }
+        shortq = fun(i);
+        cout<<"The short URl is : "<<shortq<<endl<<endl;
+        cout<<"Do you wish to continue? Y/N"<<endl;
+        cin>>p;
+        if(p == "N")
+{ 
+        exit(0);}
+        
+    }
+}
